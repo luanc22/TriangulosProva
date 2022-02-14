@@ -19,9 +19,13 @@ namespace Triangulos.ConsoleApp
             bool fecharApp = false;
 
             bool checarLetra;
+            bool checarDigito;
             bool naoLetra;
             int letraChecado;
             char[] verificarInput = new char[400];
+
+            bool opcaoValida;
+            string fecharBotao;
 
             while (fecharApp == false)
             {
@@ -44,7 +48,14 @@ namespace Triangulos.ConsoleApp
 
                 if (inputOp == "1")
                 {
+                    Console.Clear();
+                    Console.WriteLine("===== Programa Triangulos =====");
                     Console.WriteLine("");
+                    Console.WriteLine("Utilize esse programa para descobrir a definicao de um triangulo digitando seus lados.");
+                    Console.WriteLine("");
+                    Console.WriteLine("===================================");
+                    Console.WriteLine("");
+
                     Console.Write("Digite o primeiro lado do triangulo: ");
                     inputLadoUm = Console.ReadLine();
                     Console.Write("Digite o segundo lado do triangulo: ");
@@ -80,13 +91,13 @@ namespace Triangulos.ConsoleApp
 
                         for (int i = 0; i < verificarInput.Length; i++)
                         {
-                            bool checarDigito = char.IsDigit(verificarInput[i]);
+                            checarDigito = char.IsDigit(verificarInput[i]);
 
                             if (checarDigito == false)
                             {
                                 Console.WriteLine("");
                                 Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("Lado de triangulo invalido, por favor digite um numero valido.");
+                                Console.WriteLine("ERRO!\nLetra identificada, por favor, digite apenas numeros!");
                                 Console.WriteLine("");
                                 Console.ResetColor();
                                 Console.Write("Aperte ENTER para prosseguir.");
@@ -108,11 +119,23 @@ namespace Triangulos.ConsoleApp
                     LadoDois = int.Parse(inputLadoDois);
                     LadoTres = int.Parse(inputLadoTres);
 
-                    if (LadoUm + LadoDois < LadoTres || LadoDois + LadoTres < LadoUm || LadoUm + LadoTres < LadoDois)
+                    if(LadoUm <= 0 || LadoDois <=0 || LadoTres <= 0)
                     {
                         Console.WriteLine("");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Lado de triangulo invalido, por favor digite um lado valida.");
+                        Console.WriteLine("ERRO!\nNumero digitado igual ou menor que zero, digite um numero valido.");
+                        Console.WriteLine("");
+                        Console.ResetColor();
+                        Console.Write("Aperte ENTER para prosseguir.");
+                        Console.ReadLine();
+                        Console.Clear();
+                        continue;
+                    }
+                    else if (LadoUm + LadoDois < LadoTres || LadoDois + LadoTres < LadoUm || LadoUm + LadoTres < LadoDois)
+                    {
+                        Console.WriteLine("");
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("ERRO!\nLados do triangulos invalido, a soma de dois lados nao pode ser menor que o terceiro.");
                         Console.WriteLine("");
                         Console.ResetColor();
                         Console.Write("Aperte ENTER para prosseguir.");
@@ -154,13 +177,13 @@ namespace Triangulos.ConsoleApp
 
                     Console.WriteLine("");
 
-                    bool opcaoValida = false;
+                    opcaoValida = false;
                     while (opcaoValida == false)
                     {
                         Console.WriteLine("Caso deseje realizar rodar o programa novamente e inserir novos comandos, digite 1 e aperte ENTER.");
                         Console.WriteLine("Caso deseje fechar o programa, digite 0 e aperte ENTER.");
                         Console.Write("Opcao escolhida: ");
-                        string fecharBotao = Console.ReadLine();
+                        fecharBotao = Console.ReadLine();
 
                         if (fecharBotao == "0")
                         {

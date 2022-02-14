@@ -6,6 +6,7 @@ namespace Triangulos.ConsoleApp
     {
         static void Main(string[] args)
         {
+            #region Declarao de variveis. [OK]
             string inputLadoUm;
             string inputLadoDois;
             string inputLadoTres;
@@ -26,7 +27,9 @@ namespace Triangulos.ConsoleApp
 
             bool opcaoValida;
             string fecharBotao;
+            #endregion
 
+            #region Loop para manter o programa aberto e menu de opcoes. [OK]
             while (fecharApp == false)
             {
                 Console.WriteLine("===== Programa Triangulos =====");
@@ -46,6 +49,7 @@ namespace Triangulos.ConsoleApp
                 inputOp = Console.ReadLine();
                 inputOp = inputOp.Replace(" ", "");
 
+                #region Opcao de verificar o tipo do triangulo. [OK]
                 if (inputOp == "1")
                 {
                     Console.Clear();
@@ -63,6 +67,7 @@ namespace Triangulos.ConsoleApp
                     Console.Write("Digite o terceiro lado do triangulo: ");
                     inputLadoTres = Console.ReadLine();
 
+                    #region Checar se existe letras no input digitado. [OK]
                     checarLetra = false;
                     naoLetra = false;
                     letraChecado = 1;
@@ -114,12 +119,14 @@ namespace Triangulos.ConsoleApp
                     {
                         continue;
                     }
+                    #endregion
 
+                    #region Parse para Int e condicoes para verificar o tipo de Triangulo e se ele eh um triangulo valido. [OK]
                     LadoUm = int.Parse(inputLadoUm);
                     LadoDois = int.Parse(inputLadoDois);
                     LadoTres = int.Parse(inputLadoTres);
 
-                    if(LadoUm <= 0 || LadoDois <=0 || LadoTres <= 0)
+                    if (LadoUm <= 0 || LadoDois <=0 || LadoTres <= 0)
                     {
                         Console.WriteLine("");
                         Console.ForegroundColor = ConsoleColor.Red;
@@ -135,7 +142,7 @@ namespace Triangulos.ConsoleApp
                     {
                         Console.WriteLine("");
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("ERRO!\nLados do triangulos invalido, a soma de dois lados nao pode ser menor que o terceiro.");
+                        Console.WriteLine("ERRO!\nLados do triangulo invalidos, a soma de dois lados nao pode ser menor que o terceiro.");
                         Console.WriteLine("");
                         Console.ResetColor();
                         Console.Write("Aperte ENTER para prosseguir.");
@@ -143,8 +150,7 @@ namespace Triangulos.ConsoleApp
                         Console.Clear();
                         continue;
                     }
-
-                    if (LadoUm == LadoDois && LadoDois == LadoTres)
+                    else if (LadoUm == LadoDois && LadoDois == LadoTres)
                     {
                         Console.WriteLine("");
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -174,9 +180,11 @@ namespace Triangulos.ConsoleApp
                         Console.Write("Aperte ENTER para prosseguir.");
                         Console.ReadLine();
                     }
+                    #endregion
 
                     Console.WriteLine("");
 
+                    #region Menu de Opcoes no fim do programa para rodar novamente. [OK]
                     opcaoValida = false;
                     while (opcaoValida == false)
                     {
@@ -208,9 +216,10 @@ namespace Triangulos.ConsoleApp
                             continue;
                         }
                     }
-
+                    #endregion
                 }
-
+                #endregion
+                #region Opcao de Fechar Programa. [OK]
                 else if (inputOp == "2")
                 {
                     fecharApp = true;
@@ -224,10 +233,12 @@ namespace Triangulos.ConsoleApp
                     Console.ResetColor();
                     Console.Write("Aperte ENTER para prosseguir.");
                     Console.ReadLine();
-                    Console.Clear();
+                    Console.Clear();    
                     continue;
                 }
+                #endregion
             }
+            #endregion
         }
     }
 }

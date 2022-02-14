@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Triangulos.ConsoleApp
+namespace Triangulos
 {
     class Program
     {

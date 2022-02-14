@@ -108,7 +108,7 @@ namespace Triangulos.ConsoleApp
                     LadoDois = int.Parse(inputLadoDois);
                     LadoTres = int.Parse(inputLadoTres);
 
-                    if (LadoUm + LadoDois == LadoTres || LadoDois + LadoTres == LadoUm || LadoUm + LadoTres == LadoDois)
+                    if (LadoUm + LadoDois < LadoTres || LadoDois + LadoTres < LadoUm || LadoUm + LadoTres < LadoDois)
                     {
                         Console.WriteLine("");
                         Console.ForegroundColor = ConsoleColor.Red;
